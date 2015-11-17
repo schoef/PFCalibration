@@ -198,13 +198,10 @@ PFChargedHadronAnalyzer::analyze(const Event& iEvent,
   
   LogDebug("PFChargedHadronAnalyzer")<<"START event: "<<iEvent.id().event()
 			 <<" in run "<<iEvent.id().run()<<endl;
-  
 
    edm::ESHandle<CaloGeometry> pCalo;
    iSetup.get<CaloGeometryRecord>().get( pCalo );
    theCaloGeom = pCalo.product();
-
-
 
   run  = iEvent.id().run();
   evt  = iEvent.id().event();
@@ -216,21 +213,16 @@ PFChargedHadronAnalyzer::analyze(const Event& iEvent,
   olumiBlock = (size_t)lumiBlock;
   otime = (size_t)((iEvent.time().value())>>32);
 
-  
   // get PFCandidates
   Handle<PFCandidateCollection> pfCandidates;
   iEvent.getByLabel(inputTagPFCandidates_, pfCandidates);
   
-
   //get Ecal PFClusters
   Handle<reco::PFClusterCollection> pfClustersEcal;
   iEvent.getByLabel(inputTagEcalPFClusters_,pfClustersEcal);
 
   Handle<PFSimParticleCollection> trueParticles;
-  //FIXME
   bool isSimu = iEvent.getByLabel(inputTagPFSimParticles_,trueParticles);
-  // bool isMBMC=true;
-
 
   //simHits
   EcalSimHits.clear();
@@ -249,8 +241,6 @@ PFChargedHadronAnalyzer::analyze(const Event& iEvent,
 
   if(isMBMC_)
     isSimu=false;
-
-  //  cout<<isSimu<<"    "<<isMBMC_<<endl;
 
   if ( isSimu ) { 
     nEv[0]++;//  cout<<" True part size "<<(*trueParticles).size()<<"    "
@@ -417,8 +407,6 @@ PFChargedHadronAnalyzer::analyze(const Event& iEvent,
     double eta =/*pfc.eta();//*/ et.trackRef()->eta();
     double phi =/*pfc.phi();//*/ et.trackRef()->phi();
     
-
-
     //cout<<nEcal<<"   "<<nHcal<<endl;
     //ECAL element
     for(unsigned int ii=0;ii<nEcal;ii++) {
@@ -848,7 +836,6 @@ void PFChargedHadronAnalyzer::SaveSimHit(const edm::Event& iEvent,  float eta_, 
     //cout<<" ecal hit : "<<genSH->energy()<<"    "<<genSH->energyEM()<<"   "<<genSH->energyHad()<<"   "<<sH<<endl;
        HcalSimHits.push_back( genSH->energy() );
     }
-
 }
 
 
@@ -919,43 +906,7 @@ void PFChargedHadronAnalyzer::SaveRecHits(const edm::Event& iEvent, float eta_, 
       HcalRecHits.push_back( recHitRef->energy() );
       HcalRecHitsDr.push_back( dr );
     }
-
-  
-
 }
-
-
-
-
-
-
-
-
-// float PFChargedHadronAnalyzer::dPhi( float phi1, float phi2 )
-// {
-//   float phi1_= phi( cos(phi1), sin(phi1) );
-//   float phi2_= phi( cos(phi2), sin(phi2) );
-//   float dphi_= phi1_-phi2_;
-//   if( dphi_> 3.141592 ) dphi_-=2*3.141592;
-//   if( dphi_<-3.141592 ) dphi_+=2*3.141592;
-//   return dphi_;
-// }
-
-// float 
-// PFChargedHadronAnalyzer::phi( float x, float y )
-// {
-//   float phi_ =atan2(y, x);
-//   return (phi_>=0) ?  phi_ : phi_ + 2*3.141592;
-// }
-
-// float PFChargedHadronAnalyzer::dR(float eta1, float eta2, float phi1, float phi2) {
-
-//   float deta = eta1-eta2;
-//   float dphi = dPhi( phi1, phi2 );
-
-//   return sqrt( pow( deta, 2) + pow( dphi, 2) );
-
-// }
 
 
 DEFINE_FWK_MODULE(PFChargedHadronAnalyzer);
