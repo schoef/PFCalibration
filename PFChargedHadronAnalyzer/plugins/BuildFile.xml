@@ -1,0 +1,26 @@
+<use   name="root"/>
+<use   name="DataFormats/ParticleFlowCandidate"/>
+<use   name="DataFormats/ParticleFlowReco"/>
+<use   name="DataFormats/EcalRecHit"/>
+<use   name="DataFormats/HcalRecHit"/>
+<use   name="FWCore/MessageLogger"/>
+<use   name="FWCore/Utilities"/>
+<use   name="FWCore/Framework"/>
+<use   name="FWCore/ParameterSet"/>
+<use   name="FWCore/ServiceRegistry"/>
+<use   name="SimGeneral/HepPDTRecord"/>
+<use   name="TrackingTools/TransientTrack"/>
+<use   name="TrackingTools/Records"/>
+<use   name="JetMETCorrections/Objects"/>
+<use   name="MagneticField/Engine"/>
+<use   name="MetTools/PFCalibration"/>
+<use   name="SimDataFormats/CaloHit"/>
+<use   name="Geometry/CaloGeometry"/>
+<use   name="Geometry/Records"/>
+<use   name="DataFormats/DetId"/>
+<use   name="DataFormats/EcalDetId"/>
+<use   name="DataFormats/HcalDetId"/>
+
+<library   file="PFChargedHadronAnalyzer.cc" name="PFChargedHadronAnalyzer">
+  <flags   EDM_PLUGIN="1"/>
+</library>
