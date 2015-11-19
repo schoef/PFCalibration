@@ -70,7 +70,7 @@ from Configuration.AlCa.GlobalTag import GlobalTag
 process.GlobalTag = GlobalTag(process.GlobalTag, 'auto:mc', '')
 
 #FIXME?
-#process.RandomNumberGeneratorService.generator.initialSeed = 15279842
+process.RandomNumberGeneratorService.generator.initialSeed = 15279842
 
 process.generator = cms.EDProducer("FlatRandomEGunProducer",
     AddAntiParticle = cms.bool(False),
