@@ -35,12 +35,15 @@ PFChargedHadronAnalyzer::PFChargedHadronAnalyzer(const edm::ParameterSet& iConfi
 
   inputTagPFCandidates_ 
     = iConfig.getParameter<InputTag>("PFCandidates");
+  tokenPFCandidates_ = consumes<PFCandidateCollection>(inputTagPFCandidates_); 
 
   inputTagPFSimParticles_ 
     = iConfig.getParameter<InputTag>("PFSimParticles");
+  tokenPFSimParticles_ =consumes<PFSimParticleCollection>(inputTagPFSimParticles_);
 
   inputTagEcalPFClusters_ 
     = iConfig.getParameter<InputTag>("EcalPFClusters");
+  tokenEcalPFClusters_ = consumes<reco::PFClusterCollection>(inputTagEcalPFClusters_);
 
   // Smallest track pt
   ptMin_ = iConfig.getParameter<double>("ptMin");
@@ -215,14 +218,14 @@ PFChargedHadronAnalyzer::analyze(const Event& iEvent,
 
   // get PFCandidates
   Handle<PFCandidateCollection> pfCandidates;
-  iEvent.getByLabel(inputTagPFCandidates_, pfCandidates);
+  iEvent.getByToken(tokenPFCandidates_, pfCandidates);
   
   //get Ecal PFClusters
   Handle<reco::PFClusterCollection> pfClustersEcal;
-  iEvent.getByLabel(inputTagEcalPFClusters_,pfClustersEcal);
+  iEvent.getByToken(tokenEcalPFClusters_,pfClustersEcal);
 
   Handle<PFSimParticleCollection> trueParticles;
-  bool isSimu = iEvent.getByLabel(inputTagPFSimParticles_,trueParticles);
+  bool isSimu = iEvent.getByToken(tokenPFSimParticles_,trueParticles);
 
   //simHits
   EcalSimHits.clear();

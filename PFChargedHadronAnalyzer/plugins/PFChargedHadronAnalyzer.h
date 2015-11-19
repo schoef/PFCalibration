@@ -19,6 +19,7 @@
 
 #include "DataFormats/ParticleFlowReco/interface/PFSimParticle.h"
 #include "DataFormats/ParticleFlowReco/interface/PFSimParticleFwd.h"
+#include "DataFormats/ParticleFlowReco/interface/PFClusterFwd.h"
 
 #include <TFile.h>
 #include <TTree.h>
@@ -29,11 +30,14 @@
 #include "SimDataFormats/CaloHit/interface/PCaloHit.h"
 #include "SimDataFormats/CaloHit/interface/PCaloHitContainer.h"
 
+#include "DataFormats/EcalRecHit/interface/EcalRecHitCollections.h"
+
 #include "Geometry/CaloGeometry/interface/CaloGeometry.h"
 //#include "Geometry/CaloGeometry/interface/CaloCellGeometry.h"
 #include "Geometry/Records/interface/IdealGeometryRecord.h"
 #include "Geometry/Records/interface/CaloGeometryRecord.h"
 
+#include "FWCore/Utilities/interface/EDGetToken.h"
 
 #include "DataFormats/DetId/interface/DetId.h"
 #include "DataFormats/EcalDetId/interface/EBDetId.h"
@@ -72,8 +76,11 @@ class PFChargedHadronAnalyzer : public edm::EDAnalyzer {
   /// PFCandidates in which we'll look for pile up particles 
   edm::InputTag   inputTagPFCandidates_;
   edm::InputTag   inputTagPFSimParticles_;
-  
   edm::InputTag   inputTagEcalPFClusters_;
+
+  edm::EDGetTokenT<reco::PFCandidateCollection>   tokenPFCandidates_;
+  edm::EDGetTokenT<reco::PFSimParticleCollection>   tokenPFSimParticles_;
+  edm::EDGetTokenT<reco::PFClusterCollection>   tokenEcalPFClusters_;
 
   /// Min pt for charged hadrons
   double ptMin_;
