@@ -29,7 +29,7 @@ process.load('Configuration.StandardSequences.EndOfProcess_cff')
 process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
 
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(1)
+    input = cms.untracked.int32(10)
 )
 
 # Input source
@@ -70,7 +70,7 @@ from Configuration.AlCa.GlobalTag import GlobalTag
 process.GlobalTag = GlobalTag(process.GlobalTag, 'auto:mc', '')
 
 #FIXME?
-#process.RandomNumberGeneratorService.generator.initialSeed = 15279842
+process.RandomNumberGeneratorService.generator.initialSeed = 15279842
 
 process.generator = cms.EDProducer("FlatRandomEGunProducer",
     AddAntiParticle = cms.bool(False),
@@ -146,4 +146,5 @@ process.schedule = cms.Schedule(process.generation_step,process.genfiltersummary
 for path in process.paths:
 	getattr(process,path)._seq = process.generator * getattr(process,path)._seq 
 
-
+#process.options.numberOfStreams = cms.untracked.uint32(0)
+#process.options.numberOfThreads = cms.untracked.uint32(4)
