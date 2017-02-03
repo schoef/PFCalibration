@@ -18,13 +18,25 @@ process.load("Configuration.StandardSequences.FrontierConditions_GlobalTag_cff")
 process.load("Configuration.StandardSequences.MagneticField_cff")
 
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(10)
+    input = cms.untracked.int32(-1)
 )
 
 # Input source
 process.source = cms.Source("PoolSource",
-    fileNames = cms.untracked.vstring(['root://eoscms.cern.ch//store/group/dpg_hcal/comm_hcal/RecoAlgos/privatePionGun/PFjetMET/step3_pi500_2017_realistic_PF_PhotoStatUnc.root'])
+    #fileNames = cms.untracked.vstring(['root://eoscms.cern.ch//store/group/dpg_hcal/comm_hcal/RecoAlgos/privatePionGun/PFjetMET/step3_pi500_2017_realistic_PF_PhotoStatUnc.root'])
+    #fileNames = cms.untracked.vstring(['root://eoscms.cern.ch//store/group/dpg_hcal/comm_hcal/RecoAlgos/privatePionGun/PFjetMET/step3_pi500_2017_realistic_PF.root'])
+    #fileNames = cms.untracked.vstring(['root://eoscms.cern.ch//store/group/dpg_hcal/comm_hcal/RecoAlgos/privatePionGun/PFjetMET/step3_pi-20-30_10k_2017_realistic_PF.root'])
+    #fileNames = cms.untracked.vstring(['root://eoscms.cern.ch//store/group/dpg_hcal/comm_hcal/RecoAlgos/privatePionGun/PFjetMET/step3_pi-20-30_10k_2017_realistic_PF_PhotoStatUnc.root'])
+    #fileNames = cms.untracked.vstring(['root://eoscms.cern.ch//store/group/dpg_hcal/comm_hcal/RecoAlgos/privatePionGun/PFjetMET/step3_pi500_10k_2017_realistic_PF.root'])
+    #fileNames = cms.untracked.vstring(['root://eoscms.cern.ch//store/group/dpg_hcal/comm_hcal/RecoAlgos/privatePionGun/PFjetMET/step3_pi500_10k_2017_realistic_PF_PhotoStatUnc.root'])
+    #fileNames = cms.untracked.vstring(['root://eoscms.cern.ch//store/group/dpg_hcal/comm_hcal/RecoAlgos/privatePionGun/PFjetMET/step3_pi-90-100_10k_2017_realistic_PF.root'])
+    fileNames = cms.untracked.vstring(['root://eoscms.cern.ch//store/group/dpg_hcal/comm_hcal/RecoAlgos/privatePionGun/PFjetMET/step3_pi-90-100_10k_2017_realistic_PF_PhotoStatUnc.root'])
+
 )
+
+#'root://eoscms.cern.ch//store/group/dpg_hcal/comm_hcal/RecoAlgos/privatePionGun/PFjetMET/step3_pi500_2017_realistic_PF_PhotoStatUnc.root'
+#'root://eoscms.cern.ch//store/group/dpg_hcal/comm_hcal/RecoAlgos/privatePionGun/PFjetMET/step3_pi500_2017_realistic_PF.root'
+
 process.options = cms.untracked.PSet(
 )
 

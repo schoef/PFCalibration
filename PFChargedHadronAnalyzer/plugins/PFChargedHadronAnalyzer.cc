@@ -140,10 +140,10 @@ PFChargedHadronAnalyzer::PFChargedHadronAnalyzer(const edm::ParameterSet& iConfi
   // s->Branch("bcEcalPhi",&bcEcalPhi);
 
 
-  s->Branch("run",&orun,"orun/l");
-  s->Branch("evt",&oevt,"orun/l");
-  s->Branch("lumiBlock",&olumiBlock,"orun/l");
-  s->Branch("time",&otime,"orun/l");
+  s->Branch("run",&orun,"run/I");
+  s->Branch("evt",&oevt,"evt/l");
+  s->Branch("lumiBlock",&olumiBlock,"lumi/I");
+  //s->Branch("time",&otime,"orun/l");
 
   //simHits
    // s->Branch("EcalSimHits",&EcalSimHits);
