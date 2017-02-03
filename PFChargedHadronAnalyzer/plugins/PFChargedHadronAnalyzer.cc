@@ -446,9 +446,9 @@ PFChargedHadronAnalyzer::analyze(const Event& iEvent,
 	  //   erh[ieh].fraction()<<" / "<<erh[ieh].recHitRef()->position().Eta()
 	  //     <<"  "<<erh[ieh].recHitRef()->position().Phi()<<endl;
 	  bool isEB= erh[ieh].recHitRef()->layer()==-1;
-	  emHitX[ii].push_back( isEB?erh[ieh].recHitRef()->position().Eta() :erh[ieh].recHitRef()->position().X() );
-	  emHitY[ii].push_back( isEB?erh[ieh].recHitRef()->position().Phi() :erh[ieh].recHitRef()->position().Y() );
-	  emHitZ[ii].push_back( isEB?0:erh[ieh].recHitRef()->position().Z() );
+	  emHitX[ii].push_back( isEB?erh[ieh].recHitRef()->position().eta() :erh[ieh].recHitRef()->position().x() );
+	  emHitY[ii].push_back( isEB?erh[ieh].recHitRef()->position().phi() :erh[ieh].recHitRef()->position().y() );
+	  emHitZ[ii].push_back( isEB?0:erh[ieh].recHitRef()->position().z() );
 	  
 	}
       }
@@ -499,9 +499,9 @@ PFChargedHadronAnalyzer::analyze(const Event& iEvent,
 	    // 	<<"  "<<erh[ieh].recHitRef()->position().Phi()<<endl;
 
 	    bool isHB= erh[ieh].recHitRef()->layer()==1;
-	    hadHitX[ii].push_back( isHB?erh[ieh].recHitRef()->position().Eta() :erh[ieh].recHitRef()->position().X() );
-	    hadHitY[ii].push_back( isHB?erh[ieh].recHitRef()->position().Phi() :erh[ieh].recHitRef()->position().Y() );
-	    hadHitZ[ii].push_back( isHB?0:erh[ieh].recHitRef()->position().Z() );
+	    hadHitX[ii].push_back( isHB?erh[ieh].recHitRef()->position().eta() :erh[ieh].recHitRef()->position().x() );
+	    hadHitY[ii].push_back( isHB?erh[ieh].recHitRef()->position().phi() :erh[ieh].recHitRef()->position().y() );
+	    hadHitZ[ii].push_back( isHB?0:erh[ieh].recHitRef()->position().z() );
 	  
 	  }
 	}
